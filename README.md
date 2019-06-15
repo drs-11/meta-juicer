@@ -8,8 +8,8 @@ writes song's correct metadata to its mp3 file
 4) You will also need developer API key for <a href="https://acoustid.org/login">AcoustID</a> to access the fingerprint database and from <a href="https://www.last.fm/api/account/create">Last.fm</a> for metadata database
 
 ## Usage
-1)Put the main python script and Chromaprint excecutable(fpcalc.exe) in the folder with all the music files you want to have metadata corrected
-2)Run the script and that's it
+1) Put the main python script and Chromaprint excecutable(fpcalc.exe) in the folder with all the music files you want to have metadata corrected
+2) Run the script and that's it
 
 ## Todo
 - add comments
