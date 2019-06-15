@@ -77,7 +77,7 @@ def main_process(file):
 		apply_metadata(mdata, file)
 		print("done")
 	except IDError:
-		print("error(insufficient data in AcoustID database))")
+		print("error(insufficient data in AcoustID database)")
 	except ValueError:
 		print("error(audio fingerprint not found in AcoustID)")
 
