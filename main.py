@@ -30,6 +30,10 @@ def fetch_aid_data(fprnt_data):
 		return artist, title
 	else:
 		raise ValueError("no fingerprint in acoustid database")
+def dir_name_corr(filename):
+	forb_char = '\/?|><:*"+,;=[]'
+	new_filen = ''.join([char for char in filename if char not in forb_char])
+	return new_filen.strip()
 	
 def fetch_metadata(artist, title, api_key):
 	artist = '%20'.join(artist.split())
@@ -62,6 +66,7 @@ def apply_metadata(data, filename):
 		raise IDError
 		return
 	audio.save()
+	title = dir_name_corr(title)
 	os.rename(filename, title + '.mp3')
 
 def main_process(file):
