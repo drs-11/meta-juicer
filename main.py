@@ -36,7 +36,7 @@ def dir_name_corr(filename):
 	return new_filen.strip()
 	
 def fetch_metadata(artist, title, api_key):
-	artist = '%20'.join(artist.split())
+	artist = '%20'.join(artist.split()) #must use quote() from urllib.parse for correctly quoting strings
 	title = '%20'.join(title.split())
 	url = ('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=%s&artist=%s&track=%s&format=json' % (api_key, artist, title))
 	#print(url)
