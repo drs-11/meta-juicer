@@ -11,10 +11,10 @@ writes song's correct metadata to its mp3 file
 1) Put the main python script and Chromaprint excecutable(fpcalc.exe) in the folder with all the music files you want to have metadata corrected
 2) Run the script and that's it
 
-##Limitations
-1)Works only on songs which are in the Last.fm music database
-2)May not work for songs with scraped parts
-3)Also depends on acoustid's audiofingerprint database
+## Limitations
+1) Works only on songs which are in the Last.fm music database
+2) May not work for songs with scraped parts
+3) Also depends on acoustid's audiofingerprint database
 
 ## Todo
 - add comments
