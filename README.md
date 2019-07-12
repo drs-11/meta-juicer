@@ -15,6 +15,7 @@ writes song's correct metadata to its mp3 file
 1) Works only on songs which are in the Last.fm music database
 2) May not work for songs with scraped parts
 3) Also depends on acoustid's audiofingerprint database
+4) mp3 files only
 
 ## Todo
 - add comments
@@ -22,3 +23,4 @@ writes song's correct metadata to its mp3 file
 - better error handling
 - add album art as well
 - more metadata
+- solve limitations
