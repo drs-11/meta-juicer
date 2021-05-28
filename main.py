@@ -4,8 +4,8 @@ import json
 import os
 from mutagen.easyid3 import EasyID3
 
-acoustid_key = '' #enter your acoustid api key here
-lastfm_key = '' #enter you lastfm api key here
+#acoustid_key = '' #enter your acoustid api key here
+#lastfm_key = '' #enter you lastfm api key here
 
 class Error(Exception):
 	pass
@@ -51,7 +51,7 @@ def apply_metadata(data, filename):
 
 	audio = EasyID3(filename)
 	try:
-		title = data['track']['name']
+		title = validate_save(data['track']['name'])
 		audio['title'] = title
 		artist = data['track']['artist']['name']
 		audio['artist'] = artist
@@ -69,7 +69,7 @@ def apply_metadata(data, filename):
 	title = dir_name_corr(title)
 	os.rename(filename, title + '.mp3')
 
-def main_process(file):
+def main_process(file, acoustid_key, lastfm_key):
 	print("processing...", end="")
 	try:
 		arty, name = (fetch_aid_data(match_fingerprint(gen_fingerprint(file), acoustid_key)))
@@ -81,7 +81,16 @@ def main_process(file):
 	except ValueError:
 		print("error(audio fingerprint not found in AcoustID)")
 
+
+def validate_save(filename):
+	invalids = ['<', '>', '?', '|', '/','\\',':','*','#',"'",'"']
+	for i in invalids:
+		    filename.replace(i, "")
+	return filename
+
 def main():
+	acoustid_key = ''
+	lastfm_key = ''
 	if not acoustid_key:
 		acoustid_key = input("Enter your AcoustID API key: ")
 	if not lastfm_key:
@@ -91,7 +100,7 @@ def main():
 	for file in files:
 		if file[-4::] == '.mp3':
 			print(file, end="- ")
-			main_process(file)
+			main_process(file, acoustid_key, lastfm_key)
 		else:
 			continue
 
